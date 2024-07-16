@@ -5,7 +5,9 @@ WITH tb_rfv as (
         -- ,cst.PointsCustomer as vlr_pontos_cst
         -- ,cst.flEmail 
         ,CAST(min(julianday('2024-07-04') - julianday(dtTransaction)) as INTEGER) + 1 as frequencia
-        ,sum(IfNULL(pointsTransaction,0)) as vlr_pontos
+        ,sum(
+            CASE
+                when pointsTransaction > 0 then pointsTransaction end) as vlr_pontos
     FROM customers cst
     LEFT JOIN transactions trn 
         ON cst.idCustomer = trn.idCustomer 
