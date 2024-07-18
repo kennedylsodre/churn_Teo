@@ -77,7 +77,7 @@ tb_vida as (
                 else 0 
             end ) as pointsresgatadosvida
 
-        ,CAST(max(julianday({date}) - julianday(dtTransaction)) as INTEGER) as diasdevida
+        ,CAST(max(julianday({date}) - julianday(dtTransaction)) as INTEGER) +1 as diasdevida
     FROM tb_points T1 
     LEFT JOIN transactions t2 
         on t1.idCustomer = t2.idCustomer 
