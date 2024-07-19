@@ -102,6 +102,6 @@ tb_join as (
 
 SELECT  
     *
-    ,{data}as dtref
+    ,{data}as dtRef
 FROM tb_join 
 
