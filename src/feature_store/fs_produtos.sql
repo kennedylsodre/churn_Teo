@@ -21,8 +21,8 @@ SELECT
     ,sum(case when NameProduct = 'Churn_10pp' then QuantityProduct else 0 end ) as qtdChurn_10pp
     ,sum(case when NameProduct = 'Churn_2pp' then QuantityProduct else 0 end ) as qtdChurn_2pp
     ,sum(case when NameProduct = 'Churn_5pp' then QuantityProduct else 0 end ) as qtdChurn_5pp
-    ,sum(case when NameProduct = 'Lista de presença' then QuantityProduct else 0 end ) as qtdListadepresença
-    ,sum(case when NameProduct = 'Presença Streak' then QuantityProduct else 0 end ) as qtdPresençaStreak
+    ,sum(case when NameProduct = 'Lista de presenca' then QuantityProduct else 0 end ) as qtdListadepresenca
+    ,sum(case when NameProduct = 'Presenca Streak' then QuantityProduct else 0 end ) as qtdPresencaStreak
     ,sum(case when NameProduct = 'R Lover' then QuantityProduct else 0 end ) as qtdRLover
     ,sum(case when NameProduct = 'Resgatar Ponei' then QuantityProduct else 0 end ) as qtdResgatarPonei
     ,sum(case when NameProduct = 'Troca de Pontos StreamElements' then QuantityProduct else 0 end ) as qtdTrocadePontosStreamElements
@@ -32,8 +32,8 @@ SELECT
     ,sum(case when NameProduct = 'Churn_10pp' then pointsTransaction else 0 end ) as ptsChurn_10pp
     ,sum(case when NameProduct = 'Churn_2pp' then pointsTransaction else 0 end ) as ptsChurn_2pp
     ,sum(case when NameProduct = 'Churn_5pp' then pointsTransaction else 0 end ) as ptsChurn_5pp
-    ,sum(case when NameProduct = 'Lista de presença' then pointsTransaction else 0 end ) as ptsListadepresença
-    ,sum(case when NameProduct = 'Presença Streak' then pointsTransaction else 0 end ) as ptsPresençaStreak
+    ,sum(case when NameProduct = 'Lista de presenca' then pointsTransaction else 0 end ) as ptsListadepresenca
+    ,sum(case when NameProduct = 'Presenca Streak' then pointsTransaction else 0 end ) as ptsPresencaStreak
     ,sum(case when NameProduct = 'R Lover' then pointsTransaction else 0 end ) as ptsRLover
     ,sum(case when NameProduct = 'Resgatar Ponei' then pointsTransaction else 0 end ) as ptsResgatarPonei
     ,sum(case when NameProduct = 'Troca de Pontos StreamElements' then pointsTransaction else 0 end ) as ptsTrocadePontosStreamElements
@@ -43,8 +43,8 @@ SELECT
     ,1.0 * sum(case when NameProduct = 'Churn_10pp' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctChurn_10pp
     ,1.0 * sum(case when NameProduct = 'Churn_2pp' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctChurn_2pp
     ,1.0 * sum(case when NameProduct = 'Churn_5pp' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctChurn_5pp
-    ,1.0 * sum(case when NameProduct = 'Lista de presença' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctListadepresença
-    ,1.0 * sum(case when NameProduct = 'Presença Streak' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctPresençaStreak
+    ,1.0 * sum(case when NameProduct = 'Lista de presenca' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctListadepresenca
+    ,1.0 * sum(case when NameProduct = 'Presenca Streak' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctPresencaStreak
     ,1.0 * sum(case when NameProduct = 'R Lover' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctRLover
     ,1.0 * sum(case when NameProduct = 'Resgatar Ponei' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctResgatarPonei
     ,1.0 * sum(case when NameProduct = 'Troca de Pontos StreamElements' then QuantityProduct else 0 end ) / sum(pointsTransaction) as pctTrocadePontosStreamElements
