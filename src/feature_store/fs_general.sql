@@ -4,7 +4,7 @@ WITH tb_rfv as (
         ,COUNT(DISTINCT trn.dtTransaction) as Freq
         -- ,cst.PointsCustomer as vlr_pontos_cst
         -- ,cst.flEmail 
-        ,CAST(min(julianday({date}) - julianday(dtTransaction)) as INTEGER) + 1 as frequencia
+        ,CAST(min(julianday('{date}') - julianday(dtTransaction)) as INTEGER) + 1 as frequencia
         ,sum(
             CASE
                 when pointsTransaction > 0 then pointsTransaction end) as vlr_pontos
@@ -13,15 +13,15 @@ WITH tb_rfv as (
         ON cst.idCustomer = trn.idCustomer 
     LEFT JOIN transactions_product trn_prd 
         on trn_prd.idTransaction = trn.idTransaction
-    WHERE trn.dtTransaction < {date}
-    AND trn.dtTransaction >= DATE({date},'-21 day')
+    WHERE trn.dtTransaction < '{date}'
+    AND trn.dtTransaction >= DATE('{date}','-21 day')
     GROUP BY cst.idCustomer
 ) 
 
 ,tb_idade as ( 
    SELECT 
     rfv.idCustomer,
-    CAST(MAX(julianday({date}) - julianday(trn.dtTransaction)) AS INTEGER) + 1 AS idadeBaseDias
+    CAST(MAX(julianday('{date}') - julianday(trn.dtTransaction)) AS INTEGER) + 1 AS idadeBaseDias
     FROM 
     tb_rfv rfv 
 LEFT JOIN 
@@ -33,7 +33,7 @@ GROUP BY
 )
 
 SELECT 
-    {date} as dtRef
+    '{date}' as dtRef
     ,rfv.*
     ,idade.idadeBaseDias
     ,cst.flEmail
