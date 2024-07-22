@@ -30,24 +30,25 @@ def define_dates(date_start=None,date_stop=None):
     dates = []
     while date_start <= date_stop:
         dates.append(date_start.strftime('%Y-%m-%d'))
-        date_start += datetime.timedelta(days=21)
+        date_start += datetime.timedelta(days=1)
     return dates
 #%%
 def ingest_data(table,query,dates,origin_connection, target_connection):
     print(f'-----------------------Iniciando ingestão da tabela {table}-----------------------  ')
     
-    for date in tqdm(dates):
+    for dt in tqdm(dates):
         with target_connection.connect() as con:
             try:
-                state = f"DELETE FROM {table} WHERE dtRef = '{date}';"       
+                state = f"DELETE FROM {table} WHERE dtRef = '{dt}';"       
                 con.execute(sqlalchemy.text(state))
                 #con.commit()
             except exc.OperationalError as err:
                 print("Tabela ainda não existe, criando ela...")
 
-        query = query.format(date = f'{date}')
-        df = pd.read_sql(query,origin_connection)
+        query_fmt = query.format(date = dt)
+        df = pd.read_sql(query_fmt,origin_connection)
         df.to_sql(table,target_connection,index=False,if_exists='append')
+       
        
     
  
@@ -62,3 +63,4 @@ TARGET_CONNECTION = sqlalchemy.create_engine('sqlite:///../../data/featurestore.
 query = import_query(f"{args.feature_store}.sql")
 dates = define_dates(args.start,args.stop)
 ingest_data('tb_'+args.feature_store,query,dates,ORIGIN_CONNECTION,TARGET_CONNECTION)
+
