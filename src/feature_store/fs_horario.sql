@@ -5,8 +5,8 @@ SELECT
     ,pointsTransaction
     ,CAST(strftime('%H',DATETIME(dtTransaction,'-3 hour')) as integer) as hour_transaction
 FROM transactions  
-WHERE dtTransaction < {date}
-and dtTransaction >= date({date},'-21 day'))
+WHERE dtTransaction < '{date}'
+and dtTransaction >= date('{date}','-21 day'))
 
 ,tb_share as (
     SELECT 
@@ -31,6 +31,6 @@ and dtTransaction >= date({date},'-21 day'))
     GROUP by idCustomer)
 
 SELECT 
-    {date} as dtRef
+    '{date}' as dtRef
     ,*
 FROM tb_share

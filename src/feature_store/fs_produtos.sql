@@ -6,8 +6,8 @@ WITH tb_transactions_product as (
 FROM transactions trn 
 LEFT JOIN transactions_product prd 
     on prd.idTransaction = trn.idTransaction
-WHERE dtTransaction < {data} 
-and dtTransaction >= DATE({data},'-21 day')
+WHERE dtTransaction < '{date}' 
+and dtTransaction >= DATE('{date}','-21 day')
 
 ),
 
@@ -82,7 +82,7 @@ tb_produto_max as (
 )
 
 SELECT 
-    {data} as dtRef
+    '{date}' as dtRef
     ,shr.* 
     ,NameProduct
 FROM tb_share shr 
