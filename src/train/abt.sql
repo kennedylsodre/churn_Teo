@@ -48,7 +48,6 @@ SELECT
     ,t4.qtdListadepresenca
     ,t4.qtdPresencaStreak
     ,t4.qtdRLover
-    ,t4.qtdRLover
     ,t4.qtdResgatarPonei
     ,t4.qtdTrocadePontosStreamElements
     ,t4.ptsAirflowLover
